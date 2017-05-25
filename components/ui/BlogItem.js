@@ -1,9 +1,10 @@
-const BlogItem = (props) => (
+const BlogItem = ({post}) => (
   DOM.div(
     {
-      src: 'blog-list__item',
+      className: 'blog-list__item',
+      key: post.id
     },
-    React.createElement(Image, {src: props.src}),
-    React.createElement(TextBox, {text: props.text}),
+    React.createElement(Image, post.image),
+    React.createElement(TextBox, {text: post.text}),
   )
 );
