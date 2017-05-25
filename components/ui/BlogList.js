@@ -1,4 +1,4 @@
-const BlogList = ({posts}) => (
+const BlogList = ( { posts } ) => (
   DOM.div(
     {
       className: 'blog-list'
@@ -6,7 +6,7 @@ const BlogList = ({posts}) => (
     _.map(
       posts,
       (post, key) => (
-        React.createElement(BlogItem, {src: post.image, text: post.text, key: key})
+        React.createElement(BlogItem, { post })
       )
     )
   )
