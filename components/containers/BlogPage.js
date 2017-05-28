@@ -7,7 +7,12 @@ const posts = [
       height: 75,
       alt: 'cat'
     },
-    text: 'Can cats drink milk and do they read your mind? Surprising new finds suggest it’s time to forget what you think you know about your feline companion, writes Dr John Bradshaw.'
+
+    author: 'Paulo Dybala',
+    created_at: '2017-01-15',
+    updated_at: '2017-05-15',
+    likes: 10
+
   },
   {
     id: 2,
@@ -17,7 +22,11 @@ const posts = [
       height: 75,
       alt: 'business'
     },
-    text: 'Light doesn\'t necessarily travel at the speed of light. The slowest we\'ve ever recorded light moving at is 38 mph.'
+    text: 'Light doesn\'t necessarily travel at the speed of light. The slowest we\'ve ever recorded light moving at is 38 mph.',
+    author: 'Leonel Messi',
+    created_at: '2017-05-25',
+    updated_at: '2017-05-28 17:00:00',
+    likes: 15
   },
   {
     id: 3,
@@ -27,13 +36,15 @@ const posts = [
       height: 75,
       alt: 'people'
     },
-    text: 'The first man to urinate on the moon was Buzz Aldrin, shortly after stepping onto the lunar surface.'
+    text: 'The first man to urinate on the moon was Buzz Aldrin, shortly after stepping onto the lunar surface.',
+
+
   }
 ];
 class BlogPage extends React.Component {
 
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = { posts };
   }
 

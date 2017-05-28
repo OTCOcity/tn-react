@@ -6,3 +6,11 @@ const TextBox = ({text}) => (
     text
   )
 );
+
+TextBox.defaultProps = {
+  text: 'Now any text here :\'(',
+};
+
+TextBox.propTypes = {
+  text: PropTypes.string
+};

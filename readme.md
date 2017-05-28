@@ -2,4 +2,7 @@
 
 Создание блога с использованием React.
 
-Ссылка на jsbin с примером: http://jsbin.com/kevajifiyi/1/edit?js,output
+###JsBin examples
+Урок один: http://jsbin.com/jibaqa/4/edit?js,output
+
+Урок два: http://jsbin.com/babadak/11/edit?js,output
