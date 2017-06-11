@@ -1,5 +1,7 @@
+import {DOM} from 'react';
+
 const TextBox = ({text}) => (
-  DOM.span(
+  DOM.div(
     {
       className: 'blog-list__item-text'
     },
@@ -14,3 +16,5 @@ TextBox.defaultProps = {
 TextBox.propTypes = {
   text: PropTypes.string
 };
+
+export default TextBox;

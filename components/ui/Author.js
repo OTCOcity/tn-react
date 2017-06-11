@@ -1,3 +1,5 @@
+import {DOM} from 'react';
+
 const Author = ({author}) => (
   DOM.div(
     {
@@ -14,3 +16,5 @@ Author.defaultProps = {
 Author.propTypes = {
   author: PropTypes.string
 };
+
+export default Author;

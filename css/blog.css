@@ -1,0 +1,94 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    background: #edeef0;
+    font-family: "Helvetica Neue", Tahoma, sans-serif;
+    font-size: 13px;
+}
+.blog-list {
+    padding: 15px;
+}
+.blog-list__item {
+    border-radius: 2px;
+    display: block;
+    line-height: 14px;
+    position: relative;
+    overflow: visible;
+    background: #fff;
+    box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+    margin: 0 0 15px;
+    font-size: 13px;
+    padding: 15px 20px;
+
+    max-width: 640px;
+}
+.blog-list__item-image {
+    float: left;
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50%;
+    vertical-align: top;
+    margin-right: 10px;
+}
+
+.blog-list__item-author {
+    color: #2a5885;
+    font-weight: bold;
+    margin: 10px 0 3px;
+}
+.blog-list__item-date {
+    color: #939393;
+}
+
+.blog-list__item-text {
+    display: block;
+    clear: both;
+    padding: 15px 0 15px;
+    line-height: 1.462;
+    overflow: hidden;
+    word-wrap: break-word;
+    border-bottom: 1px solid #e7e8ec;
+    margin-bottom: 11px;
+}
+
+.like__btn {
+    display: inline-block;
+    cursor: pointer;
+    color: #2a5885;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-right: 8px;
+    padding: 5px 6px 6px;
+    border-radius: 3px;
+    font-size: 13px;
+    font-weight: bold;
+
+}
+.like__btn:hover {
+    color: #315b8c;
+    background-color: #f5f7fa;
+}
+.like__btn:hover .like__icon {
+    opacity: 0.5;
+}
+.like__icon {
+    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/PjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUwIDUwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MCA1MDsiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwYXRoIHN0eWxlPSJmaWxsOiMzZDY4OTk7IiBkPSJNMjQuODUsMTAuMTI2YzIuMDE4LTQuNzgzLDYuNjI4LTguMTI1LDExLjk5LTguMTI1YzcuMjIzLDAsMTIuNDI1LDYuMTc5LDEzLjA3OSwxMy41NDNjMCwwLDAuMzUzLDEuODI4LTAuNDI0LDUuMTE5Yy0xLjA1OCw0LjQ4Mi0zLjU0NSw4LjQ2NC02Ljg5OCwxMS41MDNMMjQuODUsNDhMNy40MDIsMzIuMTY1Yy0zLjM1My0zLjAzOC01Ljg0LTcuMDIxLTYuODk4LTExLjUwM2MtMC43NzctMy4yOTEtMC40MjQtNS4xMTktMC40MjQtNS4xMTlDMC43MzQsOC4xNzksNS45MzYsMiwxMy4xNTksMkMxOC41MjIsMiwyMi44MzIsNS4zNDMsMjQuODUsMTAuMTI2eiIvPjxnPjwvZz48Zz48L2c+PGc+PC9nPjxnPjwvZz48Zz48L2c+PGc+PC9nPjxnPjwvZz48Zz48L2c+PGc+PC9nPjxnPjwvZz48Zz48L2c+PGc+PC9nPjxnPjwvZz48Zz48L2c+PGc+PC9nPjwvc3ZnPg==);
+    background-repeat: no-repeat;
+    display: inline-block;
+    float: left;
+    width: 14px;
+    height: 13px;
+    margin-top: 1px;
+    opacity: 0.35;
+}
+.like__text {
+    line-height: 15px;
+    height: 13px;
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+    margin-left: 5px;
+    float: left;
+}

@@ -1,3 +1,5 @@
+import {DOM} from 'react';
+
 const Image = (props) => (
   DOM.img(
     {
@@ -28,3 +30,5 @@ Image.propTypes = {
   width: PropTypes.number,
   height: PropTypes.number
 };
+
+export default Image;

@@ -1,10 +1,14 @@
+import React, {DOM} from 'react';
+
+import BlogList from '../ui/BlogList';
+
 const posts = [
   {
     id: 1,
     image: {
       src: 'http://lorempixel.com/200/150/cats',
       width: 100,
-      height: 75,
+      height: 100,
       alt: 'cat'
     },
 
@@ -19,7 +23,7 @@ const posts = [
     image: {
       src: 'http://lorempixel.com/200/150/business',
       width: 100,
-      height: 75,
+      height: 100,
       alt: 'business'
     },
     text: 'Light doesn\'t necessarily travel at the speed of light. The slowest we\'ve ever recorded light moving at is 38 mph.',
@@ -33,10 +37,11 @@ const posts = [
     image: {
       src: 'http://lorempixel.com/200/150/people',
       width: 100,
-      height: 75,
+      height: 100,
       alt: 'people'
     },
     text: 'The first man to urinate on the moon was Buzz Aldrin, shortly after stepping onto the lunar surface.',
+    created_at: '2015-11-10',
 
 
   }
@@ -46,15 +51,38 @@ class BlogPage extends React.Component {
   constructor() {
     super();
     this.state = { posts };
+
+    this.likeIt = this.likeIt.bind(this);
   }
 
+  likeIt(id) {
+    this.setState((prevState, props) => {
+      return {posts: _.map(
+        this.state.posts,
+        (post, key) => (
+          (post.id === id) ? {...post, likes: ++post.likes || 1} : post
+        )
+      )};
+    });
+  }
   render() {
 
     return DOM.div(
       {
         className: 'blog-page'
       },
-      React.createElement(BlogList, { posts: this.state.posts })
+      React.createElement(BlogList, { posts: this.state.posts, likeIt: this.likeIt }),
+      React.createElement(PieChart, { columns:
+        _.map(
+          this.state.posts,
+          (post, key) => (
+            [post.author || 'Anonym', post.likes || 0]
+          )
+        )
+      })
     );
   }
 }
+
+
+export default BlogPage;
