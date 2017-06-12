@@ -2,6 +2,11 @@ const {DOM, PropTypes} = React;
 const {bind} = _;
 
 
+// ------------- Helpers -------------
+const fromNowDate = (date) => date ? moment(date, 'YYYY-MM-DD').fromNow() : '';
+
+
+// -------------- Data ---------------
 const posts = [
   {
     id: 1,
@@ -13,8 +18,8 @@ const posts = [
     },
 
     author: 'Paulo Dybala',
-    created_at: '2017-01-15',
-    updated_at: '2017-05-15',
+    createdAt: '2017-01-15',
+    updatedAt: '2017-05-15',
     likes: 10
 
   },
@@ -28,8 +33,8 @@ const posts = [
     },
     text: 'Light doesn\'t necessarily travel at the speed of light. The slowest we\'ve ever recorded light moving at is 38 mph.',
     author: 'Leonel Messi',
-    created_at: '2017-05-25',
-    updated_at: '2017-05-28 17:00:00',
+    createdAt: '2017-05-25',
+    updatedAt: '2017-05-28 17:00:00',
     likes: 15
   },
   {
@@ -41,11 +46,13 @@ const posts = [
       alt: 'people'
     },
     text: 'The first man to urinate on the moon was Buzz Aldrin, shortly after stepping onto the lunar surface.',
-    created_at: '2015-11-10',
+    createdAt: '2015-11-10',
 
 
   }
 ];
+
+// ------------- Components -------------
 class BlogPage extends React.Component {
 
   constructor() {
@@ -56,14 +63,16 @@ class BlogPage extends React.Component {
   }
 
   likeIt(id) {
-    this.setState((prevState, props) => {
-      return {posts: _.map(
-        this.state.posts,
-        (post, key) => (
-          (post.id === id) ? {...post, likes: ++post.likes || 1} : post
-        )
-      )};
-    });
+    this.setState((prevState, props) =>
+      (
+        {
+          posts: _.map(
+            this.state.posts,
+            (post, key) => ((post.id === id) ? {...post, likes: ++post.likes || 1} : post)
+          )
+        }
+      )
+    );
   }
   render() {
 
@@ -94,7 +103,7 @@ const BlogList = ( props ) => (
     _.map(
       props.posts,
       (post, key) => (
-        React.createElement(BlogItem, { ...post, key: post.id, likeIt: props.likeIt })
+        React.createElement(BlogItem, { ...post, key: post.id, likeIt: () => props.likeIt(post.id) })
       )
     )
   )
@@ -196,23 +205,23 @@ TextBox.propTypes = {
 
 
 
-const DateBlock = ({created_at, updated_at}) => (
+const DateBlock = ({createdAt, updatedAt}) => (
   DOM.div(
     {
       className: 'blog-list__item-dateblock'
     },
-     DOM.div({className: 'blog-list__item-date'}, `${created_at ? moment(created_at, 'YYYY-MM-DD').fromNow() : ''}`, `${updated_at ? ' / ' + moment(updated_at, 'YYYY-MM-DD').fromNow() : ''}`)
+     DOM.div({className: 'blog-list__item-date'}, `${fromNowDate(createdAt)} | ${fromNowDate(updatedAt ? updatedAt : createdAt)}`)
 
   )
 );
 
 DateBlock.defaultProps = {
-  created_at: false,
-  updated_at: false
+  createdAt: false,
+  updatedAt: false
 };
 DateBlock.propTypes = {
-  created_at: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
-  updated_at: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
+  createdAt: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+  updatedAt: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
 };
 
 
@@ -240,18 +249,18 @@ class Like extends React.Component {
   constructor(props) {
     super(props);
 
-    this.click = this.click.bind(this);
+    // this.click = this.click.bind(this);
   };
 
-  click() {
-    this.props.likeIt(this.props.id);
-  };
+  // click() {
+  //   this.props.likeIt(this.props.id);
+  // };
 
   render() {
     return DOM.div(
       {
         className: 'like__btn',
-        onClick: this.click
+        onClick: this.props.likeIt
       },
       DOM.i({className: 'like__icon'}, null),
       DOM.span({className: 'like__text'}, `Like ${this.props.likes}`)
