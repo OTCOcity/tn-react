@@ -1,34 +1,32 @@
-class Like extends React.Component {
+import {DOM} from 'react';
 
+class Like extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      likes: props.likes
-    };
+    this.click = this.click.bind(this);
+  };
 
-    this.likeIt = bind(this.likeIt, this);
-
-  }
-
-  likeIt(e) {
-    this.setState({
-      likes: this.state.likes + 1
-    });
-  }
+  click() {
+    this.props.likeIt(this.props.id);
+  };
 
   render() {
-    return DOM.button(
+    return DOM.div(
       {
-        onClick: this.likeIt
+        className: 'like__btn',
+        onClick: this.click
       },
-      `Like: ${this.state.likes}`,
+      DOM.i({className: 'like__icon'}, null),
+      DOM.span({className: 'like__text'}, `Like ${this.props.likes}`)
+
 
     )
   }
-
 }
 
 Like.defaultProps = {
   likes: 0
 };
+
+export default Like;

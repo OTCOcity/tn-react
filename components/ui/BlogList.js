@@ -1,12 +1,15 @@
-const BlogList = ( { posts } ) => (
+import React, {DOM} from 'react';
+import _ from 'lodash';
+
+const BlogList = ( props ) => (
   DOM.div(
     {
       className: 'blog-list'
     },
     _.map(
-      posts,
+      props.posts,
       (post, key) => (
-        React.createElement(BlogItem, { ...post, key: post.id })
+        React.createElement(BlogItem, { ...post, key: post.id, likeIt: props.likeIt })
       )
     )
   )
@@ -29,3 +32,5 @@ BlogList.propTypes = {
 BlogList.defaultProps = {
   posts: []
 };
+
+export default BlogList;

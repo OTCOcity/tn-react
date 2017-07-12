@@ -1,10 +1,11 @@
+import {DOM} from 'react';
+
 const DateBlock = ({created_at, updated_at}) => (
   DOM.div(
     {
       className: 'blog-list__item-dateblock'
     },
-    created_at && DOM.div({className: 'blog-list__item-date'}, 'Создано: ' + moment(created_at, "YYYY-MM-DD hh:mm:ss").fromNow()),
-    updated_at && DOM.div({className: 'blog-list__item-date'}, 'Обновлено: ' + moment(updated_at, "YYYY-MM-DD hh:mm:ss").fromNow()),
+    DOM.div({className: 'blog-list__item-date'}, `${created_at ? moment(created_at, 'YYYY-MM-DD').fromNow() : ''}`, `${updated_at ? ' / ' + moment(updated_at, 'YYYY-MM-DD').fromNow() : ''}`)
 
   )
 );
@@ -17,3 +18,5 @@ DateBlock.propTypes = {
   created_at: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   updated_at: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
 };
+
+export default DateBlock;

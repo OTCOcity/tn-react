@@ -1,3 +1,8 @@
+import React, {DOM} from 'react';
+
+import Image from '../ui/Image';
+import TextBox from '../ui/TextBox';
+
 const BlogItem = (props) => (
   DOM.div(
     {
@@ -19,4 +24,6 @@ BlogItem.propTypes = {
     height: PropTypes.number,
     alt: PropTypes.string
   }),
-}
+};
+
+export default BlogItem;
