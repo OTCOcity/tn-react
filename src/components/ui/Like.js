@@ -1,15 +1,15 @@
-import {DOM} from 'react';
+import React, {DOM} from 'react';
 
 class Like extends React.Component {
   constructor(props) {
     super(props);
 
     this.click = this.click.bind(this);
-  };
+  }
 
   click() {
     this.props.likeIt(this.props.id);
-  };
+  }
 
   render() {
     return DOM.div(
@@ -19,9 +19,7 @@ class Like extends React.Component {
       },
       DOM.i({className: 'like__icon'}, null),
       DOM.span({className: 'like__text'}, `Like ${this.props.likes}`)
-
-
-    )
+    );
   }
 }
 

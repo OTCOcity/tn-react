@@ -1,4 +1,4 @@
-import {DOM} from 'react';
+import {PropTypes, DOM} from 'react';
 
 const Image = (props) => (
   DOM.img(
