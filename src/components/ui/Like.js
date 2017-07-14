@@ -27,8 +27,8 @@ Like.defaultProps = {
   likes: 0,
 };
 Like.propTypes = {
-  likes: PropTypes.string,
-  likeIt: PropTypes.function,
+  likes: PropTypes.number,
+  likeIt: PropTypes.func,
   id: PropTypes.number,
 };
 
