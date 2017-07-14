@@ -1,4 +1,4 @@
-import React, {DOM} from 'react';
+import React, {PropTypes, DOM} from 'react';
 
 class Like extends React.Component {
   constructor(props) {
@@ -24,7 +24,12 @@ class Like extends React.Component {
 }
 
 Like.defaultProps = {
-  likes: 0
+  likes: 0,
+};
+Like.propTypes = {
+  likes: PropTypes.string,
+  likeIt: PropTypes.function,
+  id: PropTypes.number,
 };
 
 export default Like;

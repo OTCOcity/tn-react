@@ -1,12 +1,11 @@
 import React, {DOM} from 'react';
 import posts from '../../constants/static/posts';
+import _ from 'lodash';
 
 import BlogList from '../ui/BlogList';
 import PieChart from '../ui/PieChart';
 
-
 class BlogPage extends React.Component {
-
   constructor() {
     super();
     this.state = {posts};
@@ -15,20 +14,17 @@ class BlogPage extends React.Component {
   }
 
   likeIt(id) {
-    this.setState(() => {
-      return {
-        posts: _.map(
-          this.state.posts,
-          (post) => (
-            (post.id === id) ? {...post, likes: ++post.likes || 1} : post
-          )
+    this.setState(() => ({
+      posts: _.map(
+        this.state.posts,
+        (post) => (
+          (post.id === id) ? {...post, likes: ++post.likes || 1} : post
         )
-      };
-    });
+      )
+    }));
   }
 
   render() {
-
     return DOM.div(
       {
         className: 'blog-page'
@@ -48,6 +44,5 @@ class BlogPage extends React.Component {
     );
   }
 }
-
 
 export default BlogPage;
