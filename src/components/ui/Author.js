@@ -1,4 +1,4 @@
-import {DOM} from 'react';
+import {DOM, PropTypes} from 'react';
 
 const Author = ({author}) => (
   DOM.div(
@@ -6,7 +6,6 @@ const Author = ({author}) => (
       className: 'blog-list__item-author'
     },
     author
-
   )
 );
 

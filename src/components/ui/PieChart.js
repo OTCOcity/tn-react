@@ -1,8 +1,7 @@
-import {DOM} from 'react';
+import React, {PropTypes, DOM} from 'react';
 import ReactDOM from 'react-dom';
 
 class PieChart extends React.Component {
-
   componentWillReceiveProps(nextProps) {
     this.chart.load({
       columns: nextProps.columns
@@ -18,18 +17,21 @@ class PieChart extends React.Component {
       bindto: ReactDOM.findDOMNode(this.refs.chart),
       data: {
         columns: this.props.columns,
-        type : 'pie'
+        type: 'pie'
       }
     });
   }
 
   render() {
-    return DOM.div({ref: 'chart'}, null)
+    return DOM.div({ref: 'chart'}, null);
   }
 }
 
 PieChart.defaultProps = {
   columns: []
+};
+PieChart.propTypes = {
+  columns: PropTypes.array
 };
 
 export default PieChart;

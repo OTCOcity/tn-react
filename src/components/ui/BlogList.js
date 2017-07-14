@@ -1,15 +1,20 @@
-import React, {DOM} from 'react';
+import React, {PropTypes, DOM} from 'react';
 import _ from 'lodash';
+import BlogItem from './BlogItem';
 
-const BlogList = ( props ) => (
+const BlogList = (props) => (
   DOM.div(
     {
       className: 'blog-list'
     },
     _.map(
       props.posts,
-      (post, key) => (
-        React.createElement(BlogItem, { ...post, key: post.id, likeIt: props.likeIt })
+      (post) => (
+        React.createElement(BlogItem, {
+          ...post,
+          key: post.id,
+          likeIt: props.likeIt
+        })
       )
     )
   )
