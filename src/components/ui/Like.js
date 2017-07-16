@@ -14,7 +14,7 @@ class Like extends React.Component {
   render() {
     return DOM.div(
       {
-        className: 'like__btn',
+        className: 'like__btn noselect',
         onClick: this.click
       },
       DOM.i({className: 'like__icon'}, null),
@@ -24,12 +24,12 @@ class Like extends React.Component {
 }
 
 Like.defaultProps = {
-  likes: 0,
+  likes: 0
 };
 Like.propTypes = {
   likes: PropTypes.number,
   likeIt: PropTypes.func,
-  id: PropTypes.number,
+  id: PropTypes.number
 };
 
 export default Like;

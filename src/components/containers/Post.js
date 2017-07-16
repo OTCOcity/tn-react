@@ -1,21 +1,20 @@
 import React, {DOM} from 'react';
-import _ from 'lodash';
 
 import BlogList from '../ui/BlogList';
-import PieChart from '../ui/PieChart';
 
 import humps from 'humps';
 
+import _ from 'lodash';
+
 import request from 'superagent';
 
-class BlogPage extends React.Component {
-  constructor() {
+class Post extends React.Component {
+  constructor(params) {
     super();
     this.state = {
-      searchQuery: '',
-      posts: []
+      id: params.params.id,
+      searchQuery: ''
     };
-
     this.likeIt = this.likeIt.bind(this);
     this.searchFunc = this.searchFunc.bind(this);
   }
@@ -26,7 +25,7 @@ class BlogPage extends React.Component {
 
   fetchPosts() {
     request.get(
-      'http://u33830.netangels.ru/posts.php',
+      `http://u33830.netangels.ru/posts.php?id=${this.state.id}`,
       {},
       (err, res) => {
         this.setState({ posts: humps.camelizeKeys(res.body) });
@@ -67,22 +66,9 @@ class BlogPage extends React.Component {
         likeIt: this.likeIt,
         searchFunc: this.searchFunc,
         searchQuery: this.state.searchQuery
-      }),
-      DOM.div(
-        {
-          className: 'blog-page__right-col'
-        },
-        React.createElement(PieChart, {
-          columns: _.map(
-            this.state.posts,
-            (post) => (
-              [post.author || 'Anonym', post.likes || 0]
-            )
-          )
-        })
-      )
+      })
     );
   }
 }
 
-export default BlogPage;
+export default Post;

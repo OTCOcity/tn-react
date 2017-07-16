@@ -1,15 +1,8 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-body {
-    background: #edeef0;
-    font-family: "Helvetica Neue", Tahoma, sans-serif;
-    font-size: 13px;
+.blog-page {
+    padding-top: 0;
 }
 .blog-list {
-    padding: 15px;
+    padding: 0 15px;
 }
 .blog-list__item {
     border-radius: 2px;
@@ -23,7 +16,6 @@ body {
     font-size: 13px;
     padding: 15px 20px;
 
-    max-width: 640px;
 }
 .blog-list__item-image {
     float: left;
@@ -35,10 +27,17 @@ body {
 }
 
 .blog-list__item-author {
-    color: #2a5885;
-    font-weight: bold;
     margin: 10px 0 3px;
 }
+.blog-list__item-author-link {
+    font-weight: bold;
+    text-decoration: none;
+    color: #2a5885;
+}
+.blog-list__item-author-link:hover {
+    text-decoration: underline;
+}
+
 .blog-list__item-date {
     color: #939393;
 }
@@ -54,6 +53,7 @@ body {
     margin-bottom: 11px;
 }
 
+/* Like btn */
 .like__btn {
     display: inline-block;
     cursor: pointer;
@@ -91,4 +91,38 @@ body {
     -moz-osx-font-smoothing: auto;
     margin-left: 5px;
     float: left;
+}
+
+/* Search */
+.search {
+    position: relative;
+    margin-bottom: 15px;
+}
+.search__input {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAQCAYAAAAmlE46AAAA0ElEQVR4AWOgBmCctHBX6qSFu09MWrT7MwiD2CAxkBxWHX0zt0tOXLh77+TFe/5jwyA5kBoMm2CagLY8nrRgVyRIEQiD2CAxmGYUm0FOgWnqnb1DCN1UkBhMM9jZMADyB0gQZDouz4PkQGpAauGCoEAACUL9gDMMoK76TK7GV+Q5ddGu/WQFzoRFuxJJig6YM+vr61kIJABMDNU8HWQRoST3duKi3UcmLdqZPGn+bm8g/xuKZmIB0EAXmOaJi3Z1gcRI1gzEl0jQhgiPtoW7hQHNmBVSozMJ0wAAAABJRU5ErkJggg==');
+    background-repeat: no-repeat;
+    -ms-high-contrast-adjust: auto;
+    padding: 14px 28px 13px 28px;
+    border: none;
+    border-left: 20px solid transparent;
+    background-position: 0;
+    color: #000;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    line-height: 18px;
+    box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+    outline: none;
+}
+.search__input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #bbb;
+}
+.search__input::-moz-placeholder { /* Firefox 19+ */
+    color: #bbb;
+}
+.search__input:-ms-input-placeholder { /* IE 10+ */
+    color: #bbb;
+}
+.search__input:-moz-placeholder { /* Firefox 18- */
+    color: #bbb;
 }

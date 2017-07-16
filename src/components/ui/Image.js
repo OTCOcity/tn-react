@@ -16,7 +16,7 @@ const Image = (props) => (
 );
 
 Image.defaultProps = {
-  src: 'http://lorempixel.com/200/150/cats',
+  src: 'http://lorempixel.com/100/100/cats',
   alt: 'image',
   title: 'image',
   width: 10,

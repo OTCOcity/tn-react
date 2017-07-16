@@ -1,0 +1,26 @@
+.header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background: #507299;
+    height: 42px;
+    box-sizing: border-box;
+    color: #fff;
+    line-height: 42px;
+    padding: 0 20px;
+}
+.header__title {
+    font-size: 18px;
+}
+.header__title-link {
+    color: #fff;
+    text-decoration: none;
+}
+.header__title-link:hover {
+    text-decoration: underline;
+}
+.header__title-logo {
+    height: 23px;
+    margin-right: 10px;
+    vertical-align: top;
+    margin-top: 8px;}

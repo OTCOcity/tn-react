@@ -9,11 +9,10 @@ import Like from './Like';
 const BlogItem = (props) => (
   DOM.div(
     {
-      className: 'blog-list__item',
-
+      className: `blog-list__item ${props.visible === false ? 'hide' : ''}`,
     },
     React.createElement(Image, props.image),
-    React.createElement(Author, {author: props.author}),
+    React.createElement(Author, {author: props.author, id: props.id}),
     React.createElement(DateBlock, {...props}),
     React.createElement(TextBox, {text: props.text}),
     React.createElement(Like, {
@@ -31,6 +30,10 @@ BlogItem.propTypes = {
     height: PropTypes.number,
     alt: PropTypes.string
   }),
+};
+
+BlogItem.defaultProps = {
+  likes: 0,
 };
 
 export default BlogItem;
