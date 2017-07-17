@@ -1,6 +1,6 @@
 import React, {DOM} from 'react';
 
-import BlogList from '../ui/BlogList';
+import BlogList from 'components/ui/BlogList';
 
 import humps from 'humps';
 
@@ -46,14 +46,9 @@ class Post extends React.Component {
   }
 
   searchFunc(searchQuery) {
-    this.setState(() => ({
-      posts: _.map(
-        this.state.posts,
-        (post) => new RegExp(searchQuery, 'i').test(post.author + post.text) || searchQuery.length === 0
-          ? {...post, visible: true}
-          : {...post, visible: false}
-      )
-    }));
+    this.setState({
+      searchQuery
+    });
   }
 
   render() {
@@ -62,7 +57,11 @@ class Post extends React.Component {
         className: 'blog-page'
       },
       React.createElement(BlogList, {
-        posts: this.state.posts,
+        posts: _.filter(
+          this.state.posts,
+          (post) =>
+            new RegExp(this.state.searchQuery, 'i').test(post.author + post.text) || this.state.searchQuery.length === 0
+        ),
         likeIt: this.likeIt,
         searchFunc: this.searchFunc,
         searchQuery: this.state.searchQuery

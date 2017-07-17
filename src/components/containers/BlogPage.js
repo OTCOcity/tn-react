@@ -1,8 +1,8 @@
 import React, {DOM} from 'react';
 import _ from 'lodash';
 
-import BlogList from '../ui/BlogList';
-import PieChart from '../ui/PieChart';
+import BlogList from 'components/ui/BlogList';
+import PieChart from 'components/ui/PieChart';
 
 import humps from 'humps';
 
@@ -47,14 +47,9 @@ class BlogPage extends React.Component {
   }
 
   searchFunc(searchQuery) {
-    this.setState(() => ({
-      posts: _.map(
-        this.state.posts,
-        (post) => new RegExp(searchQuery, 'i').test(post.author + post.text) || searchQuery.length === 0
-          ? {...post, visible: true}
-          : {...post, visible: false}
-      )
-    }));
+    this.setState({
+      searchQuery
+    });
   }
 
   render() {
@@ -63,23 +58,29 @@ class BlogPage extends React.Component {
         className: 'blog-page'
       },
       React.createElement(BlogList, {
-        posts: this.state.posts,
+        posts: _.filter(
+          this.state.posts,
+          (post) =>
+            new RegExp(this.state.searchQuery, 'i').test(post.author + post.text) || this.state.searchQuery.length === 0
+        ),
         likeIt: this.likeIt,
         searchFunc: this.searchFunc,
-        searchQuery: this.state.searchQuery
       }),
       DOM.div(
         {
           className: 'blog-page__right-col'
         },
-        React.createElement(PieChart, {
-          columns: _.map(
-            this.state.posts,
-            (post) => (
-              [post.author || 'Anonym', post.likes || 0]
+        DOM.div(
+          {className: 'blog-list__item '},
+          React.createElement(PieChart, {
+            columns: _.map(
+              this.state.posts,
+              (post) => (
+                [post.author || 'Anonym', post.likes || 0]
+              )
             )
-          )
-        })
+          })
+        )
       )
     );
   }

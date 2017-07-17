@@ -1,9 +1,9 @@
-import MainLayout from '../components/layouts/MainLayout';
+import MainLayout from 'components/layouts/MainLayout';
 
-import {PostPath} from '../helpers/routes';
+import {postPath} from 'helpers/routes';
 
-import BlogPage from '../components/containers/BlogPage';
-import Post from '../components/containers/Post';
+import BlogPage from 'components/containers/BlogPage';
+import Post from 'components/containers/Post';
 
 const Index = {
   path: '/',
@@ -11,7 +11,7 @@ const Index = {
 };
 
 const PostView = {
-  path: PostPath(),
+  path: postPath(),
   component: Post
 };
 

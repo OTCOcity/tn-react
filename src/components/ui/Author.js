@@ -1,7 +1,7 @@
 import React, {DOM, PropTypes} from 'react';
-import Link from '../elements/Link';
+import Link from 'components/elements/Link';
 
-import {PostPath} from '../../helpers/routes';
+import {postPath} from 'helpers/routes';
 
 const Author = ({author, id}) => (
   DOM.div(
@@ -9,7 +9,7 @@ const Author = ({author, id}) => (
       className: 'blog-list__item-author'
     },
     React.createElement(Link, {
-      to: PostPath(id),
+      to: postPath(id),
       className: 'blog-list__item-author-link'
     }, author)
   )

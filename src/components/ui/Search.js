@@ -4,10 +4,6 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      searchQuery: props.searchQuery
-    };
-
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -33,11 +29,9 @@ class Search extends React.Component {
 }
 
 Search.defaultProps = {
-  searchQuery: '',
   searchFunc() {},
 };
 Search.propTypes = {
-  searchQuery: PropTypes.string,
   searchFunc: PropTypes.func
 };
 

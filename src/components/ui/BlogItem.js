@@ -1,10 +1,10 @@
 import React, {PropTypes, DOM} from 'react';
 
-import Image from './Image';
-import TextBox from './TextBox';
-import DateBlock from './DateBlock';
-import Author from './Author';
-import Like from './Like';
+import Image from 'components/ui/Image';
+import TextBox from 'components/ui/TextBox';
+import DateBlock from 'components/ui/DateBlock';
+import Author from 'components/ui/Author';
+import Like from 'components/ui/Like';
 
 const BlogItem = (props) => (
   DOM.div(
