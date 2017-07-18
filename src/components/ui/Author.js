@@ -1,11 +1,17 @@
-import {DOM, PropTypes} from 'react';
+import React, {DOM, PropTypes} from 'react';
+import Link from 'components/elements/Link';
 
-const Author = ({author}) => (
+import {postPath} from 'helpers/routes';
+
+const Author = ({author, id}) => (
   DOM.div(
     {
       className: 'blog-list__item-author'
     },
-    author
+    React.createElement(Link, {
+      to: postPath(id),
+      className: 'blog-list__item-author-link'
+    }, author)
   )
 );
 

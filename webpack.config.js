@@ -33,7 +33,10 @@ module.exports = {
           'css-loader?importLoaders=1'
         ]
       },
-      { test: /\.(eot|png|ttf|svg|woff|woff2)$/, loader: 'url-loader'}
+      {
+        test: /\.(eot|png|jpg|ttf|svg|woff|woff2)$/,
+        loader: 'url-loader',
+      }
     ]
   },
 

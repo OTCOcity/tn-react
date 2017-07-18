@@ -11,7 +11,7 @@ const TextBox = ({text}) => (
 );
 
 TextBox.defaultProps = {
-  text: 'Now any text here :\'(',
+  text: 'No any text here :\'(',
 };
 
 TextBox.propTypes = {

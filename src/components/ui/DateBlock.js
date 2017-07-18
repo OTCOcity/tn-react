@@ -1,5 +1,5 @@
 import {PropTypes, DOM} from 'react';
-import {formatDate} from '../../helpers/date';
+import {formatDate} from 'helpers/date';
 
 const DateBlock = ({createdAt, updatedAt}) => (
   DOM.div(

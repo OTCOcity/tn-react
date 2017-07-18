@@ -1,6 +1,8 @@
 import React, {PropTypes, DOM} from 'react';
 import ReactDOM from 'react-dom';
 
+import c3 from 'c3';
+
 class PieChart extends React.Component {
   componentWillReceiveProps(nextProps) {
     this.chart.load({

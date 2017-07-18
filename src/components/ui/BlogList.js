@@ -1,12 +1,17 @@
 import React, {PropTypes, DOM} from 'react';
-import _ from 'lodash';
-import BlogItem from './BlogItem';
+import {map} from 'lodash';
+
+import BlogItem from 'components/ui/BlogItem';
+import Search from 'components/ui/Search';
 
 const BlogList = (props) => (
   DOM.div(
     {
-      className: 'blog-list'
+      className: 'blog-list blog-page__left-col'
     },
+    React.createElement(Search, {
+      searchFunc: props.searchFunc
+    }),
     _.map(
       props.posts,
       (post) => (

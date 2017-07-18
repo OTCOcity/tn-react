@@ -9,6 +9,7 @@ const host = "localhost";
 const port = "3000";
 
 new webpackDevServer(webpack(config), {
+  historyApiFallback: true,
   hot: true,
   publicPath: config.output.publicPath,
   stats: {
