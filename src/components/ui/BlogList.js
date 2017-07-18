@@ -12,7 +12,7 @@ const BlogList = (props) => (
     React.createElement(Search, {
       searchFunc: props.searchFunc
     }),
-    _.map(
+    map(
       props.posts,
       (post) => (
         React.createElement(BlogItem, {

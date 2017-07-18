@@ -37,7 +37,7 @@ class BlogPage extends React.Component {
 
   likeIt(id) {
     this.setState(() => ({
-      posts: _.map(
+      posts: map(
         this.state.posts,
         (post) => (
           (post.id === id) ? {...post, likes: ++post.likes || 1} : post
@@ -58,7 +58,7 @@ class BlogPage extends React.Component {
         className: 'blog-page'
       },
       React.createElement(BlogList, {
-        posts: _.filter(
+        posts: filter(
           this.state.posts,
           (post) =>
             new RegExp(this.state.searchQuery, 'i').test(post.author + post.text) || this.state.searchQuery.length === 0
@@ -73,7 +73,7 @@ class BlogPage extends React.Component {
         DOM.div(
           {className: 'blog-list__item '},
           React.createElement(PieChart, {
-            columns: _.map(
+            columns: map(
               this.state.posts,
               (post) => (
                 [post.author || 'Anonym', post.likes || 0]

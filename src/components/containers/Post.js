@@ -36,7 +36,7 @@ class Post extends React.Component {
 
   likeIt(id) {
     this.setState(() => ({
-      posts: _.map(
+      posts: map(
         this.state.posts,
         (post) => (
           (post.id === id) ? {...post, likes: ++post.likes || 1} : post
@@ -57,7 +57,7 @@ class Post extends React.Component {
         className: 'blog-page'
       },
       React.createElement(BlogList, {
-        posts: _.filter(
+        posts: filter(
           this.state.posts,
           (post) =>
             new RegExp(this.state.searchQuery, 'i').test(post.author + post.text) || this.state.searchQuery.length === 0
