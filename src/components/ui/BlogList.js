@@ -1,5 +1,5 @@
 import React, {PropTypes, DOM} from 'react';
-import _ from 'lodash';
+import {map} from 'lodash';
 
 import BlogItem from 'components/ui/BlogItem';
 import Search from 'components/ui/Search';

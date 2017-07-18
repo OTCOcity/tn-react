@@ -1,5 +1,5 @@
 import React, {DOM} from 'react';
-import _ from 'lodash';
+import {map, filter} from 'lodash';
 
 import BlogList from 'components/ui/BlogList';
 import PieChart from 'components/ui/PieChart';
