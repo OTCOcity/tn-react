@@ -1,54 +1,14 @@
-import React, {DOM} from 'react';
+import React, { DOM, PropTypes } from 'react';
 
 import BlogList from 'components/ui/BlogList';
 
-import humps from 'humps';
+import { likePost } from 'actions/Post';
 
-import {map, filter} from 'lodash';
-
-import request from 'superagent';
+import store from 'store';
 
 class Post extends React.Component {
-  constructor(params) {
+  constructor() {
     super();
-    this.state = {
-      id: params.params.id,
-      searchQuery: ''
-    };
-    this.likeIt = this.likeIt.bind(this);
-    this.searchFunc = this.searchFunc.bind(this);
-  }
-
-  componentDidMount() {
-    this.fetchPosts();
-  }
-
-  fetchPosts() {
-    request.get(
-      `http://u33830.netangels.ru/posts.php?id=${this.state.id}`,
-      {},
-      (err, res) => {
-        this.setState({ posts: humps.camelizeKeys(res.body) });
-      }
-    );
-  }
-
-
-  likeIt(id) {
-    this.setState(() => ({
-      posts: map(
-        this.state.posts,
-        (post) => (
-          (post.id === id) ? {...post, likes: ++post.likes || 1} : post
-        )
-      )
-    }));
-  }
-
-  searchFunc(searchQuery) {
-    this.setState({
-      searchQuery
-    });
   }
 
   render() {
@@ -57,17 +17,22 @@ class Post extends React.Component {
         className: 'blog-page'
       },
       React.createElement(BlogList, {
-        posts: filter(
-          this.state.posts,
-          (post) =>
-            new RegExp(this.state.searchQuery, 'i').test(post.author + post.text) || this.state.searchQuery.length === 0
-        ),
-        likeIt: this.likeIt,
-        searchFunc: this.searchFunc,
-        searchQuery: this.state.searchQuery
+        posts: this.props.post ? [this.props.post] : [],
+        likeIt: () => store.dispatch(likePost()),
+        isFetching: this.props.isFetching
       })
+
     );
   }
 }
+
+Post.propTypes = {
+  post: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array,
+  ]),
+  isFetching: PropTypes.bool
+};
+
 
 export default Post;

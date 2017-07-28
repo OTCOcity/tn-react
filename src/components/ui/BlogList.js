@@ -1,7 +1,8 @@
-import React, {PropTypes, DOM} from 'react';
-import {map} from 'lodash';
+import React, { PropTypes, DOM } from 'react';
+import { map } from 'lodash';
 
 import BlogItem from 'components/ui/BlogItem';
+import Preload from 'components/ui/Preload';
 import Search from 'components/ui/Search';
 
 const BlogList = (props) => (
@@ -9,10 +10,15 @@ const BlogList = (props) => (
     {
       className: 'blog-list blog-page__left-col'
     },
-    React.createElement(Search, {
+    props.searchFunc && React.createElement(Search, {
       searchFunc: props.searchFunc
     }),
-    map(
+    props.isFetching ? DOM.div(
+      {
+        className: 'blog-page__left-col'
+      },
+      React.createElement(Preload)
+    ) : map(
       props.posts,
       (post) => (
         React.createElement(BlogItem, {

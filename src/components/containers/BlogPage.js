@@ -1,12 +1,12 @@
-import React, {DOM} from 'react';
-import {map, filter} from 'lodash';
+import React, { DOM, PropTypes } from 'react';
+import { map, filter } from 'lodash';
 
 import BlogList from 'components/ui/BlogList';
 import PieChart from 'components/ui/PieChart';
 
-import humps from 'humps';
+import store from 'store';
 
-import request from 'superagent';
+import { likePostById } from 'actions/Posts';
 
 class BlogPage extends React.Component {
   constructor() {
@@ -16,34 +16,7 @@ class BlogPage extends React.Component {
       posts: []
     };
 
-    this.likeIt = this.likeIt.bind(this);
     this.searchFunc = this.searchFunc.bind(this);
-  }
-
-  componentDidMount() {
-    this.fetchPosts();
-  }
-
-  fetchPosts() {
-    request.get(
-      'http://u33830.netangels.ru/posts.php',
-      {},
-      (err, res) => {
-        this.setState({ posts: humps.camelizeKeys(res.body) });
-      }
-    );
-  }
-
-
-  likeIt(id) {
-    this.setState(() => ({
-      posts: map(
-        this.state.posts,
-        (post) => (
-          (post.id === id) ? {...post, likes: ++post.likes || 1} : post
-        )
-      )
-    }));
   }
 
   searchFunc(searchQuery) {
@@ -59,12 +32,13 @@ class BlogPage extends React.Component {
       },
       React.createElement(BlogList, {
         posts: filter(
-          this.state.posts,
+          this.props.posts,
           (post) =>
             new RegExp(this.state.searchQuery, 'i').test(post.author + post.text) || this.state.searchQuery.length === 0
         ),
-        likeIt: this.likeIt,
+        likeIt: (id) => store.dispatch(likePostById(id)),
         searchFunc: this.searchFunc,
+        isFetching: this.props.isFetching,
       }),
       DOM.div(
         {
@@ -74,7 +48,7 @@ class BlogPage extends React.Component {
           {className: 'blog-list__item '},
           React.createElement(PieChart, {
             columns: map(
-              this.state.posts,
+              this.props.posts,
               (post) => (
                 [post.author || 'Anonym', post.likes || 0]
               )
@@ -85,5 +59,13 @@ class BlogPage extends React.Component {
     );
   }
 }
+
+BlogPage.propTypes = {
+  posts: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array,
+  ]),
+  isFetching: PropTypes.bool
+};
 
 export default BlogPage;

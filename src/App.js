@@ -1,17 +1,42 @@
 import React from 'react';
 
-import {Router, browserHistory} from 'react-router';
+import ReactDOM from 'react-dom';
+
+import { Router, match, browserHistory } from 'react-router';
 
 import routes from 'routes';
 
-import 'css/defaults.css';
-import 'css/blog.css';
-import 'css/header.css';
-import 'css/footer.css';
-import 'css/layout.css';
+import { Provider } from 'react-redux';
+
+import store from 'store';
+
+import prepareData from 'helpers/prepareData';
+
+import DevTools from 'containers/DevTools';
+
+import 'css/styles.css';
+
+function historyCb(location) {
+  match({ location, routes }, (error, redirect, state) => {
+    if (!error && !redirect) {
+      prepareData(store, state);
+    }
+  });
+}
+
+browserHistory.listenBefore(historyCb);
+historyCb(window.location);
+
 
 const App = () => (
-  <Router history={browserHistory} routes={routes} />
+  <Provider store={store}>
+    <Router history={browserHistory} routes={routes} />
+  </Provider>
+);
+
+ReactDOM.render(
+  <DevTools store={store} />,
+  document.getElementById('devtools')
 );
 
 export default App;
