@@ -1,71 +1,39 @@
-import React, { DOM, PropTypes } from 'react';
-import { map, filter } from 'lodash';
+import React, {DOM, PropTypes} from 'react';
 
 import BlogList from 'components/ui/BlogList';
-import PieChart from 'components/ui/PieChart';
+import PieChartContainer from 'containers/PieChartContainer';
 
-import store from 'store';
+const BlogPage = (props) => (
 
-import { likePostById } from 'actions/Posts';
-
-class BlogPage extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      searchQuery: '',
-      posts: []
-    };
-
-    this.searchFunc = this.searchFunc.bind(this);
-  }
-
-  searchFunc(searchQuery) {
-    this.setState({
-      searchQuery
-    });
-  }
-
-  render() {
-    return DOM.div(
+  DOM.div(
+    {
+      className: 'blog-page'
+    },
+    React.createElement(BlogList, {
+      posts: props.posts,
+      likeIt: props.likeIt,
+      isFetching: props.isFetching,
+      searchIt: props.searchIt,
+    }),
+    DOM.div(
       {
-        className: 'blog-page'
+        className: 'blog-page__right-col'
       },
-      React.createElement(BlogList, {
-        posts: filter(
-          this.props.posts,
-          (post) =>
-            new RegExp(this.state.searchQuery, 'i').test(post.author + post.text) || this.state.searchQuery.length === 0
-        ),
-        likeIt: (id) => store.dispatch(likePostById(id)),
-        searchFunc: this.searchFunc,
-        isFetching: this.props.isFetching,
-      }),
       DOM.div(
-        {
-          className: 'blog-page__right-col'
-        },
-        DOM.div(
-          {className: 'blog-list__item '},
-          React.createElement(PieChart, {
-            columns: map(
-              this.props.posts,
-              (post) => (
-                [post.author || 'Anonym', post.likes || 0]
-              )
-            )
-          })
-        )
+        {className: 'blog-list__item '},
+        React.createElement(PieChartContainer)
       )
-    );
-  }
-}
+    )
+  )
+);
 
 BlogPage.propTypes = {
   posts: PropTypes.oneOfType([
     PropTypes.object,
-    PropTypes.array,
+    PropTypes.array
   ]),
-  isFetching: PropTypes.bool
+  isFetching: PropTypes.bool,
+  likeIt: PropTypes.func
 };
 
 export default BlogPage;

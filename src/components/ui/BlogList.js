@@ -10,8 +10,8 @@ const BlogList = (props) => (
     {
       className: 'blog-list blog-page__left-col'
     },
-    props.searchFunc && React.createElement(Search, {
-      searchFunc: props.searchFunc
+    props.searchIt && React.createElement(Search, {
+      searchIt: props.searchIt
     }),
     props.isFetching ? DOM.div(
       {
@@ -32,18 +32,10 @@ const BlogList = (props) => (
 );
 
 BlogList.propTypes = {
-  posts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      image: PropTypes.shape({
-        src: PropTypes.string,
-        width: PropTypes.number,
-        height: PropTypes.number,
-        alt: PropTypes.string
-      }),
-      alt: PropTypes.string
-    })
-  ),
+  posts: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array
+  ]),
 };
 BlogList.defaultProps = {
   posts: []

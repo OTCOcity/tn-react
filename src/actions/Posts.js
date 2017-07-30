@@ -24,6 +24,12 @@ const errorPosts = () => ({
   type: types.FETCH_POSTS_ERROR
 });
 
+export const setSearch = (search) => ({
+  type: types.SET_SEARCH,
+  search
+});
+
+
 export function fetchPosts() {
   return (dispatch) => {
     dispatch(requestPosts());
