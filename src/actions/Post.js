@@ -2,13 +2,9 @@ import request from 'superagent';
 
 import * as types from 'constants/actionTypes/PostActionTypes';
 
-import { API_POST_REQUEST_URL } from 'constants/API';
+import {API_POST_REQUEST_URL} from 'constants/API';
 
 import humps from 'humps';
-
-export const likePost = () => ({
-  type: types.LIKE_POST
-});
 
 const requestPost = (id) => ({
   type: types.FETCH_POST_REQUEST,

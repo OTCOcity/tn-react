@@ -1,9 +1,9 @@
 import MainLayout from 'components/layouts/MainLayout';
 
-import { postPath } from 'helpers/routes';
+import {postPath} from 'helpers/routes';
 
-import { fetchPosts } from 'actions/Posts';
-import { fetchPost } from 'actions/Post';
+import {fetchPosts} from 'actions/Posts';
+import {fetchPost} from 'actions/Post';
 
 import PostContainer from 'containers/PostContainer';
 import PostsContainer from 'containers/PostsContainer';

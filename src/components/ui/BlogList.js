@@ -1,18 +1,16 @@
-import React, { PropTypes, DOM } from 'react';
-import { map } from 'lodash';
+import React, {PropTypes, DOM} from 'react';
+import {map} from 'lodash';
 
 import BlogItem from 'components/ui/BlogItem';
 import Preload from 'components/ui/Preload';
-import Search from 'components/ui/Search';
+import SearchContainer from 'containers/SearchContainer';
 
 const BlogList = (props) => (
   DOM.div(
     {
       className: 'blog-list blog-page__left-col'
     },
-    props.searchIt && React.createElement(Search, {
-      searchIt: props.searchIt
-    }),
+    props.searchEnable && React.createElement(SearchContainer),
     props.isFetching ? DOM.div(
       {
         className: 'blog-page__left-col'
@@ -24,7 +22,7 @@ const BlogList = (props) => (
         React.createElement(BlogItem, {
           ...post,
           key: post.id,
-          likeIt: props.likeIt
+          singlePost: props.singlePost,
         })
       )
     )

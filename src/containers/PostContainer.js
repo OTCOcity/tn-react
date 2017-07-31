@@ -1,10 +1,6 @@
-import { connect } from 'react-redux';
-
-import { bindActionCreators } from 'redux';
+import {connect} from 'react-redux';
 
 import Post from 'components/containers/Post';
-
-import { likePost } from 'actions/Post';
 
 const stateToProps = (state) => ({
   post: state.post.entry,
@@ -12,9 +8,5 @@ const stateToProps = (state) => ({
   error: state.post.error
 });
 
-const actionToProps = (dispatch) => ({
-  likeIt: bindActionCreators(likePost, dispatch)
-});
-
-export default connect(stateToProps, actionToProps)(Post);
+export default connect(stateToProps)(Post);
 

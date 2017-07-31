@@ -1,4 +1,4 @@
-import { assign } from 'lodash';
+import {assign} from 'lodash';
 
 import * as types from 'constants/actionTypes/PostsActionTypes';
 
@@ -16,9 +16,9 @@ export default function (state = initialState, action) {
     case types.FETCH_POSTS_ERROR:
       return assign({}, state, {error: true, isFetching: false});
     case types.FETCH_POSTS_SUCCESS:
-      return assign({}, state, {error: false, isFetching: false, entries: action.response });
+      return assign({}, state, {error: false, isFetching: false, entries: action.response});
     case types.SET_SEARCH:
-      return assign({}, state, {search: action.search });
+      return assign({}, state, {search: action.query});
     case types.LIKE_POST_BY_ID: {
       const newEntries = assign(
         {},

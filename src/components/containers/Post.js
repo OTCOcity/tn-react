@@ -1,4 +1,4 @@
-import React, { DOM, PropTypes } from 'react';
+import React, {DOM, PropTypes} from 'react';
 
 import BlogList from 'components/ui/BlogList';
 
@@ -9,8 +9,9 @@ const Post = (props) => (
     },
     React.createElement(BlogList, {
       posts: props.post ? [props.post] : [],
-      likeIt: props.likeIt,
-      isFetching: props.isFetching
+      isFetching: props.isFetching,
+      searchEnable: false,
+      singlePost: true
     })
   )
 );

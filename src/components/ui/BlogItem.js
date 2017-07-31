@@ -4,7 +4,7 @@ import Image from 'components/ui/Image';
 import TextBox from 'components/ui/TextBox';
 import DateBlock from 'components/ui/DateBlock';
 import Author from 'components/ui/Author';
-import Like from 'components/ui/Like';
+import LikeContainer from 'containers/LikeContainer';
 
 const BlogItem = (props) => (
   DOM.div(
@@ -15,10 +15,10 @@ const BlogItem = (props) => (
     React.createElement(Author, {author: props.author, id: props.id}),
     React.createElement(DateBlock, {...props}),
     React.createElement(TextBox, {text: props.text}),
-    React.createElement(Like, {
+    React.createElement(LikeContainer, {
       likes: props.likes,
-      likeIt: props.likeIt,
-      id: props.id
+      id: props.id,
+      singlePost: props.singlePost
     })
   )
 );

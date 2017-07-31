@@ -1,4 +1,4 @@
-import { DOM} from 'react';
+import {DOM} from 'react';
 
 const Preload = () => (
   DOM.div(

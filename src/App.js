@@ -2,11 +2,11 @@ import React from 'react';
 
 import ReactDOM from 'react-dom';
 
-import { Router, match, browserHistory } from 'react-router';
+import {Router, match, browserHistory} from 'react-router';
 
 import routes from 'routes';
 
-import { Provider } from 'react-redux';
+import {Provider} from 'react-redux';
 
 import store from 'store';
 
@@ -17,7 +17,7 @@ import DevTools from 'containers/DevTools';
 import 'css/styles.css';
 
 function historyCb(location) {
-  match({ location, routes }, (error, redirect, state) => {
+  match({location, routes}, (error, redirect, state) => {
     if (!error && !redirect) {
       prepareData(store, state);
     }
@@ -30,12 +30,12 @@ historyCb(window.location);
 
 const App = () => (
   <Provider store={store}>
-    <Router history={browserHistory} routes={routes} />
+    <Router history={browserHistory} routes={routes}/>
   </Provider>
 );
 
 ReactDOM.render(
-  <DevTools store={store} />,
+  <DevTools store={store}/>,
   document.getElementById('devtools')
 );
 

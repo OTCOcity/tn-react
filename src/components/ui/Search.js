@@ -1,4 +1,4 @@
-import { PropTypes, DOM } from 'react';
+import {PropTypes, DOM} from 'react';
 
 const Search = (props) => (
   DOM.div(
@@ -9,7 +9,7 @@ const Search = (props) => (
       {
         className: 'search__input',
         placeholder: 'Start typing a search text',
-        onChange: (e) => props.searchIt(e.target.value)
+        onChange: (e) => props.search(e.target.value)
       },
       null
     )
