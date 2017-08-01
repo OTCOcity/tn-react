@@ -21,8 +21,7 @@ const BlogList = (props) => (
       (post) => (
         React.createElement(BlogItem, {
           ...post,
-          key: post.id,
-          singlePost: props.singlePost,
+          key: post.id
         })
       )
     )

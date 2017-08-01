@@ -16,8 +16,13 @@ export default function (state = initialState, action) {
       return assign({}, state, {error: true, isFetching: false});
     case types.FETCH_POST_SUCCESS:
       return assign({}, state, {error: false, isFetching: false, entry: action.response});
-    case types.LIKE_POST:
-      return assign({}, state, {entry: {...state.entry, likes: state.entry.likes + 1}});
+    case types.LIKE_POST_BY_ID: {
+      if (state.entry === null) {
+        return state;
+      } else {
+        return assign({}, state, {entry: {...state.entry, likes: state.entry.likes + 1}});
+      }
+    }
     default:
       return state;
   }

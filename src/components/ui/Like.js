@@ -4,7 +4,7 @@ const Like = (props) => (
   DOM.div(
     {
       className: 'like__btn noselect',
-      onClick: () => props.likePost(props.id, props.singlePost)
+      onClick: () => props.likePost(props.id)
     },
     DOM.i({className: 'like__icon'}, null),
     DOM.span({className: 'like__text'}, `Like ${props.likes}`)

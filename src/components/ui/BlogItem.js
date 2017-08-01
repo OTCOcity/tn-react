@@ -17,8 +17,7 @@ const BlogItem = (props) => (
     React.createElement(TextBox, {text: props.text}),
     React.createElement(LikeContainer, {
       likes: props.likes,
-      id: props.id,
-      singlePost: props.singlePost
+      id: props.id
     })
   )
 );
