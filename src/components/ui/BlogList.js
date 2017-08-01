@@ -2,23 +2,26 @@ import React, {PropTypes, DOM} from 'react';
 import {map} from 'lodash';
 
 import BlogItem from 'components/ui/BlogItem';
-import Search from 'components/ui/Search';
+import Preload from 'components/ui/Preload';
+import SearchContainer from 'containers/SearchContainer';
 
 const BlogList = (props) => (
   DOM.div(
     {
       className: 'blog-list blog-page__left-col'
     },
-    React.createElement(Search, {
-      searchFunc: props.searchFunc
-    }),
-    map(
+    props.searchEnable && React.createElement(SearchContainer),
+    props.isFetching ? DOM.div(
+      {
+        className: 'blog-page__left-col'
+      },
+      React.createElement(Preload)
+    ) : map(
       props.posts,
       (post) => (
         React.createElement(BlogItem, {
           ...post,
-          key: post.id,
-          likeIt: props.likeIt
+          key: post.id
         })
       )
     )
@@ -26,18 +29,10 @@ const BlogList = (props) => (
 );
 
 BlogList.propTypes = {
-  posts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      image: PropTypes.shape({
-        src: PropTypes.string,
-        width: PropTypes.number,
-        height: PropTypes.number,
-        alt: PropTypes.string
-      }),
-      alt: PropTypes.string
-    })
-  ),
+  posts: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array
+  ]),
 };
 BlogList.defaultProps = {
   posts: []

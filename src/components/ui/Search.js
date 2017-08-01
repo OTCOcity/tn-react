@@ -1,38 +1,27 @@
-import React, {PropTypes, DOM} from 'react';
+import {PropTypes, DOM} from 'react';
 
-class Search extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(event) {
-    this.props.searchFunc(event.target.value);
-  }
-
-  render() {
-    return DOM.div(
+const Search = (props) => (
+  DOM.div(
+    {
+      className: 'search'
+    },
+    DOM.input(
       {
-        className: 'search'
+        className: 'search__input',
+        placeholder: 'Start typing a search text',
+        onChange: (e) => props.search(e.target.value)
       },
-      DOM.input(
-        {
-          className: 'search__input',
-          placeholder: 'Start typing a search text',
-          onChange: this.handleChange
-        },
-        null
-      )
-    );
-  }
-}
+      null
+    )
+  )
+);
 
 Search.defaultProps = {
-  searchFunc() {},
+  searchIt() {
+  },
 };
 Search.propTypes = {
-  searchFunc: PropTypes.func
+  searchIt: PropTypes.func
 };
 
 export default Search;

@@ -1,0 +1,1 @@
+export const API_POST_REQUEST_URL = 'http://u33830.netangels.ru/posts.php';

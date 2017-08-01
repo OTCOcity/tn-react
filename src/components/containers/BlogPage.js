@@ -1,89 +1,38 @@
-import React, {DOM} from 'react';
-import {map, filter} from 'lodash';
+import React, {DOM, PropTypes} from 'react';
 
 import BlogList from 'components/ui/BlogList';
-import PieChart from 'components/ui/PieChart';
+import PieChartContainer from 'containers/PieChartContainer';
 
-import humps from 'humps';
+const BlogPage = (props) => (
 
-import request from 'superagent';
-
-class BlogPage extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      searchQuery: '',
-      posts: []
-    };
-
-    this.likeIt = this.likeIt.bind(this);
-    this.searchFunc = this.searchFunc.bind(this);
-  }
-
-  componentDidMount() {
-    this.fetchPosts();
-  }
-
-  fetchPosts() {
-    request.get(
-      'http://u33830.netangels.ru/posts.php',
-      {},
-      (err, res) => {
-        this.setState({ posts: humps.camelizeKeys(res.body) });
-      }
-    );
-  }
-
-
-  likeIt(id) {
-    this.setState(() => ({
-      posts: map(
-        this.state.posts,
-        (post) => (
-          (post.id === id) ? {...post, likes: ++post.likes || 1} : post
-        )
-      )
-    }));
-  }
-
-  searchFunc(searchQuery) {
-    this.setState({
-      searchQuery
-    });
-  }
-
-  render() {
-    return DOM.div(
+  DOM.div(
+    {
+      className: 'blog-page'
+    },
+    React.createElement(BlogList, {
+      posts: props.posts,
+      isFetching: props.isFetching,
+      searchEnable: true
+    }),
+    DOM.div(
       {
-        className: 'blog-page'
+        className: 'blog-page__right-col'
       },
-      React.createElement(BlogList, {
-        posts: filter(
-          this.state.posts,
-          (post) =>
-            new RegExp(this.state.searchQuery, 'i').test(post.author + post.text) || this.state.searchQuery.length === 0
-        ),
-        likeIt: this.likeIt,
-        searchFunc: this.searchFunc,
-      }),
       DOM.div(
-        {
-          className: 'blog-page__right-col'
-        },
-        DOM.div(
-          {className: 'blog-list__item '},
-          React.createElement(PieChart, {
-            columns: map(
-              this.state.posts,
-              (post) => (
-                [post.author || 'Anonym', post.likes || 0]
-              )
-            )
-          })
-        )
+        {className: 'blog-list__item '},
+        React.createElement(PieChartContainer)
       )
-    );
-  }
-}
+    )
+  )
+);
+
+BlogPage.propTypes = {
+  posts: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array
+  ]),
+  isFetching: PropTypes.bool,
+  likeIt: PropTypes.func
+};
 
 export default BlogPage;
