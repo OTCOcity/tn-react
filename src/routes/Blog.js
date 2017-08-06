@@ -11,8 +11,8 @@ import PostsContainer from 'containers/PostsContainer';
 const Index = {
   path: '/',
   component: PostsContainer,
-  prepareData: (store) => {
-    store.dispatch(fetchPosts());
+  prepareData: (store, query) => {
+    store.dispatch(fetchPosts(query.page));
   }
 };
 

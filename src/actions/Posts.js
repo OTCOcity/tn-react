@@ -7,12 +7,14 @@ export const setSearch = (search) => ({
   search
 });
 
-export function fetchPosts() {
+export function fetchPosts(page = 0) {
   return {
     [API_CALL]: {
       endpoint: '/',
       method: 'GET',
-      query: {},
+      query: {
+        page
+      },
       types: [
         types.FETCH_POSTS_REQUEST,
         types.FETCH_POSTS_SUCCESS,

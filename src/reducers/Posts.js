@@ -3,6 +3,8 @@ import {assign} from 'lodash';
 import * as types from 'constants/actionTypes/PostsActionTypes';
 
 const initialState = {
+  page: 0,
+  pageCount: 5,
   isFetching: false,
   error: false,
   search: '',
@@ -16,7 +18,13 @@ export default function (state = initialState, action) {
     case types.FETCH_POSTS_ERROR:
       return assign({}, state, {error: true, isFetching: false});
     case types.FETCH_POSTS_SUCCESS:
-      return assign({}, state, {error: false, isFetching: false, entries: action.response.posts});
+      return assign({}, state, {
+        error: false,
+        isFetching: false,
+        entries: action.response.posts,
+        page: action.response.pages.page,
+        pageCount: action.response.pages.pageCount
+      });
     case types.SET_SEARCH:
       return assign({}, state, {search: action.query});
     case types.LIKE_POST_BY_ID: {
