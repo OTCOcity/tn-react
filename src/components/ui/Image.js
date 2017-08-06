@@ -1,10 +1,12 @@
 import {PropTypes, DOM} from 'react';
 
+import {API_URL, API_IMAGE_PATH} from 'constants/API';
+
 const Image = (props) => (
   DOM.img(
     {
       className: 'blog-list__item-image',
-      src: props.src,
+      src: `${API_URL}${API_IMAGE_PATH}/${props.image}`,
       title: props.alt,
       alt: props.alt,
       style: {
@@ -16,11 +18,11 @@ const Image = (props) => (
 );
 
 Image.defaultProps = {
-  src: 'http://lorempixel.com/100/100/cats',
+  src: '',
   alt: 'image',
   title: 'image',
-  width: 10,
-  height: 10
+  width: 50,
+  height: 50
 };
 
 Image.propTypes = {

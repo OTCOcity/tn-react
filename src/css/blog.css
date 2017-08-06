@@ -84,6 +84,9 @@
     margin-top: 1px;
     opacity: 0.35;
 }
+.like__btn.like__btn--liked .like__icon {
+    opacity:1;
+}
 .like__text {
     line-height: 15px;
     height: 13px;

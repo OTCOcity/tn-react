@@ -20,7 +20,10 @@ export default function (state = initialState, action) {
       if (state.entry === null) {
         return state;
       } else {
-        return assign({}, state, {entry: {...state.entry, likes: state.entry.likes + 1}});
+        const likeInc = state.entry.liked ? -1 : 1;
+        return assign({}, state, {
+          entry: {...state.entry, likes: state.entry.likes + likeInc, liked: !state.entry.liked}
+        });
       }
     }
     default:

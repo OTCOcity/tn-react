@@ -17,12 +17,12 @@ const DateBlock = ({createdAt, updatedAt}) => (
 );
 
 DateBlock.defaultProps = {
-  createdAt: false,
-  updatedAt: false
+  createdAt: 'unknown date',
+  updatedAt: 'unknown date'
 };
 DateBlock.propTypes = {
-  createdAt: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
-  updatedAt: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
+  createdAt: PropTypes.number,
+  updatedAt: PropTypes.number
 };
 
 export default DateBlock;

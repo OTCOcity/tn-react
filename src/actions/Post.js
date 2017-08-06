@@ -1,33 +1,18 @@
-import request from 'superagent';
-
 import * as types from 'constants/actionTypes/PostActionTypes';
 
-import {API_POST_REQUEST_URL} from 'constants/API';
-
-import humps from 'humps';
-
-const requestPost = (id) => ({
-  type: types.FETCH_POST_REQUEST,
-  id
-});
-
-const receivePost = (response) => ({
-  type: types.FETCH_POST_SUCCESS,
-  response
-});
-
-const errorPost = () => ({
-  type: types.FETCH_POST_ERROR
-});
+import {API_CALL} from 'middleware/API';
 
 export function fetchPost(id) {
-  return (dispatch) => {
-    dispatch(requestPost(id));
-
-    return request
-      .get(`${API_POST_REQUEST_URL}?id=${id}`)
-      .end((err, response) => {
-        err ? dispatch(errorPost()) : dispatch(receivePost(humps.camelizeKeys(response.body)));
-      });
+  return {
+    [API_CALL]: {
+      endpoint: `/${id}`,
+      method: 'GET',
+      query: {},
+      types: [
+        types.FETCH_POST_REQUEST,
+        types.FETCH_POST_SUCCESS,
+        types.FETCH_POST_ERROR
+      ]
+    }
   };
 }

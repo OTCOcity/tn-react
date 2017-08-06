@@ -3,7 +3,7 @@ import {PropTypes, DOM} from 'react';
 const Like = (props) => (
   DOM.div(
     {
-      className: 'like__btn noselect',
+      className: `like__btn noselect ${props.liked ? 'like__btn--liked' : ''}`,
       onClick: () => props.likePost(props.id)
     },
     DOM.i({className: 'like__icon'}, null),
