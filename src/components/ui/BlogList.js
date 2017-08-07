@@ -4,6 +4,7 @@ import {map} from 'lodash';
 import BlogItem from 'components/ui/BlogItem';
 import Preload from 'components/ui/Preload';
 import SearchContainer from 'containers/SearchContainer';
+import PaginationContainer from 'containers/PaginationContainer';
 
 const BlogList = (props) => (
   DOM.div(
@@ -24,7 +25,8 @@ const BlogList = (props) => (
           key: post.id
         })
       )
-    )
+    ),
+    props.pageEnable && React.createElement(PaginationContainer)
   )
 );
 

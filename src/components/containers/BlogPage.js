@@ -12,7 +12,8 @@ const BlogPage = (props) => (
     React.createElement(BlogList, {
       posts: props.posts,
       isFetching: props.isFetching,
-      searchEnable: true
+      searchEnable: true,
+      pageEnable: true
     }),
     DOM.div(
       {

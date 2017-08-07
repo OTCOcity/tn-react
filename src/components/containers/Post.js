@@ -11,6 +11,7 @@ const Post = (props) => (
       posts: props.post ? [props.post] : [],
       isFetching: props.isFetching,
       searchEnable: false,
+      pageEnable: false
     })
   )
 );

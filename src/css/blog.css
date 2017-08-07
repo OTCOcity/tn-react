@@ -84,6 +84,9 @@
     margin-top: 1px;
     opacity: 0.35;
 }
+.like__btn.like__btn--liked .like__icon {
+    opacity:1;
+}
 .like__text {
     line-height: 15px;
     height: 13px;
@@ -125,4 +128,25 @@
 }
 .search__input:-moz-placeholder { /* Firefox 18- */
     color: #bbb;
+}
+
+
+/* Pagination */
+.pagination__item {
+    display: inline-block;
+    text-decoration: none;
+    color: #939393;
+    padding: 2px 6px;
+    border: 1px solid #939393;
+    margin-right: 3px;
+}
+.pagination__item:hover {
+    color: #2a5885;
+    border: 1px solid #2a5885;
+}
+.pagination__item.is-active {
+    cursor: default;
+    font-weight: bold;
+    color: #2a5885;
+    border: 1px solid #2a5885;
 }
