@@ -1,7 +1,7 @@
 import React, {DOM, PropTypes} from 'react';
 
 import BlogList from 'components/ui/BlogList';
-import PieChartContainer from 'containers/PieChartContainer';
+// import PieChartContainer from 'containers/PieChartContainer';
 
 const BlogPage = (props) => (
 
@@ -19,10 +19,10 @@ const BlogPage = (props) => (
       {
         className: 'blog-page__right-col'
       },
-      DOM.div(
-        {className: 'blog-list__item '},
-        React.createElement(PieChartContainer)
-      )
+      // DOM.div(
+      //   {className: 'blog-list__item '},
+      //   React.createElement(PieChartContainer)
+      // )
     )
   )
 );

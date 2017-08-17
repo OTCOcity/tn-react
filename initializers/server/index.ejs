@@ -12,8 +12,9 @@
 </head>
 <body>
 
-<div id="app" class="app"></div>
+<div id="app" class="app"><%- content %></div>
 <div id="devtools"></div>
+<script>window.__INITIAL_STATE__ = <%- initialState %></script>
 <script src="/assets/bundle.js"></script>
 
 </body>

@@ -2,8 +2,6 @@ import React, {DOM, PropTypes} from 'react';
 
 import Link from 'components/elements/Link';
 
-import img from 'static/images/react_logo.png';
-
 const MainLayout = ({children}) => (
   DOM.div(
     {className: 'app-container'},
@@ -36,7 +34,7 @@ const Header = () => (
         DOM.img(
           {
             className: 'header__title-logo',
-            src: img,
+            src: '/src/static/images/react_logo.png',
             alt: 'React blog'
           }
         ),
