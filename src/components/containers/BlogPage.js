@@ -3,7 +3,7 @@ import React, {DOM, PropTypes} from 'react';
 import Helmet from 'react-helmet';
 
 import BlogList from 'components/ui/BlogList';
-// import PieChartContainer from 'containers/PieChartContainer';
+import PieChartContainer from 'containers/PieChartContainer';
 
 const BlogPage = (props) => (
 
@@ -20,11 +20,11 @@ const BlogPage = (props) => (
     DOM.div(
       {
         className: 'blog-page__right-col'
-      }
-      // DOM.div(
-      //   {className: 'blog-list__item '},
-      //   React.createElement(PieChartContainer)
-      // )
+      },
+      DOM.div(
+        {className: 'blog-list__item '},
+        React.createElement(PieChartContainer)
+      )
     ),
     React.createElement(Helmet, {
       title: 'Список постов'

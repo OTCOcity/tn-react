@@ -102,7 +102,7 @@
     margin-bottom: 15px;
 }
 .search__input {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAQCAYAAAAmlE46AAAA0ElEQVR4AWOgBmCctHBX6qSFu09MWrT7MwiD2CAxkBxWHX0zt0tOXLh77+TFe/5jwyA5kBoMm2CagLY8nrRgVyRIEQiD2CAxmGYUm0FOgWnqnb1DCN1UkBhMM9jZMADyB0gQZDouz4PkQGpAauGCoEAACUL9gDMMoK76TK7GV+Q5ddGu/WQFzoRFuxJJig6YM+vr61kIJABMDNU8HWQRoST3duKi3UcmLdqZPGn+bm8g/xuKZmIB0EAXmOaJi3Z1gcRI1gzEl0jQhgiPtoW7hQHNmBVSozMJ0wAAAABJRU5ErkJggg==');
+    background-image: url('/images/search_icon.png');
     background-repeat: no-repeat;
     -ms-high-contrast-adjust: auto;
     padding: 14px 28px 13px 28px;

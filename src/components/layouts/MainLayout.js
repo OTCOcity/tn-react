@@ -34,7 +34,7 @@ const Header = () => (
         DOM.img(
           {
             className: 'header__title-logo',
-            src: '/src/static/images/react_logo.png',
+            src: '/images/react_logo.png',
             alt: 'React blog'
           }
         ),
