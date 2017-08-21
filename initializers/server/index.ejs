@@ -3,17 +3,19 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no">
-    <title>Blog page</title>
 
-    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <%- head.title.toString() %>
+
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.12/c3.min.css">
 
 </head>
 <body>
 
-<div id="app" class="app"></div>
+<div id="app" class="app"><%- content %></div>
 <div id="devtools"></div>
+<script>window.__INITIAL_STATE__ = <%- initialState %></script>
 <script src="/assets/bundle.js"></script>
 
 </body>

@@ -1,5 +1,7 @@
 import React, {DOM, PropTypes} from 'react';
 
+import Helmet from 'react-helmet';
+
 import BlogList from 'components/ui/BlogList';
 
 const Post = (props) => (
@@ -12,7 +14,11 @@ const Post = (props) => (
       isFetching: props.isFetching,
       searchEnable: false,
       pageEnable: false
+    }),
+    props.post && React.createElement(Helmet, {
+      title: props.post.author
     })
+
   )
 );
 
