@@ -1,8 +1,7 @@
 import MainLayout from 'components/layouts/MainLayout';
 
 import initialLoad from 'helpers/initialLoad';
-import {postPath} from 'helpers/routes';
-import {postEditPath} from 'helpers/routes';
+import {postPath, postEditPath} from 'helpers/routes';
 
 import {fetchPosts} from 'actions/Posts';
 import {fetchPost} from 'actions/Post';
@@ -42,10 +41,6 @@ const PostEdit = {
 const ContactsView = {
   path: '/contacts',
   component: ContactsContainer,
-  // prepareData: (store, query, params) => {
-  //   if (initialLoad()) return;
-  //   return store.dispatch(fetchPost(params.id));
-  // }
 };
 
 export default {

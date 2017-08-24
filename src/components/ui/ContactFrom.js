@@ -1,9 +1,8 @@
-import React, {DOM} from 'react';
+import React, {DOM, PropTypes} from 'react';
 
 import {assign, mapValues} from 'lodash/object';
 
 class ContactFrom extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -17,7 +16,7 @@ class ContactFrom extends React.Component {
   onSubmit(e) {
     e.preventDefault();
 
-    let errors = {};
+    const errors = {};
     const values = mapValues(this.form, 'value');
 
     if (!values.email || values.email.indexOf('@') < 1) {
@@ -29,8 +28,6 @@ class ContactFrom extends React.Component {
     if (!values.message || values.message.length < 10) {
       errors.message = 'Текст сообщения должен быть не короче 10 символов';
     }
-
-    console.log(errors);
 
     this.setState(assign(
       {},
@@ -60,7 +57,6 @@ class ContactFrom extends React.Component {
             fieldRef: this.generateRef('name')
           }
         ),
-
         React.createElement(
           Text,
           {
@@ -70,7 +66,6 @@ class ContactFrom extends React.Component {
             fieldRef: this.generateRef('email')
           }
         ),
-
         React.createElement(
           TextArea,
           {
@@ -114,6 +109,15 @@ class Text extends React.Component {
     );
   }
 }
+
+Text.propTypes = {
+  label: PropTypes.string,
+  name: PropTypes.string,
+  fieldRef: PropTypes.func,
+  error: PropTypes.string,
+
+};
+
 class TextArea extends React.Component {
   render() {
     const {label, name, fieldRef, error} = this.props;
@@ -134,3 +138,12 @@ class TextArea extends React.Component {
     );
   }
 }
+
+TextArea.propTypes = {
+  label: PropTypes.string,
+  name: PropTypes.string,
+  fieldRef: PropTypes.func,
+  error: PropTypes.string,
+
+};
+

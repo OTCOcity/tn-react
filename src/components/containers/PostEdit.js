@@ -9,20 +9,19 @@ import {connect} from 'react-redux';
 import classNames from 'classnames';
 
 const validate = (values) => {
-
   const errors = {};
 
   if (values.author.length < 5) {
-    errors.author = "Длина заголовка не меньше 5 символов";
+    errors.author = 'Длина заголовка не меньше 5 символов';
   }
   if (values.text.length < 15) {
-    errors.text = "Длина текста не меньше 15 символов";
+    errors.text = 'Длина текста не меньше 15 символов';
   }
 
   return errors;
 };
 
-const renderField = ({input, label, type, meta: {touched, error, warning}}) => (
+const renderField = ({input, label, meta: {touched, error}}) => (
   DOM.div(
     {
       className: classNames('input-group', {error})
@@ -36,7 +35,6 @@ const renderField = ({input, label, type, meta: {touched, error, warning}}) => (
 );
 
 const PostEdit = ({handleSubmit}) => (
-
   DOM.div(
     {
       className: 'blog-page'

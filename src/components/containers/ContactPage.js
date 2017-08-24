@@ -1,8 +1,8 @@
-import React, {DOM, PropTypes} from 'react';
+import React, {DOM} from 'react';
 
 import Helmet from 'react-helmet';
 
-import ContactForm from 'components/ui/ContactFrom'
+import ContactForm from 'components/ui/ContactFrom';
 
 const ContactPage = () => (
   DOM.div(
@@ -16,6 +16,5 @@ const ContactPage = () => (
 
   )
 );
-
 
 export default ContactPage;

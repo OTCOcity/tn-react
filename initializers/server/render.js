@@ -12,10 +12,10 @@ import routes from 'routes';
 
 import prepareData from 'helpers/prepareData';
 
-const store = createStore();
 
 export default (req, res) => {
 
+  const store = createStore();
 
   match({routes, location: req.url}, (error, redirectLocation, renderProps) => {
     Promise.all(compact(prepareData(store, renderProps))).then(() => {
