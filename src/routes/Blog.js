@@ -1,13 +1,15 @@
 import MainLayout from 'components/layouts/MainLayout';
 
 import initialLoad from 'helpers/initialLoad';
-import {postPath} from 'helpers/routes';
+import {postPath, postEditPath} from 'helpers/routes';
 
 import {fetchPosts} from 'actions/Posts';
 import {fetchPost} from 'actions/Post';
 
 import PostContainer from 'containers/PostContainer';
+import PostEditContainer from 'containers/PostEditContainer';
 import PostsContainer from 'containers/PostsContainer';
+import ContactsContainer from 'containers/ContactsContainer';
 
 const Index = {
   path: '/',
@@ -27,10 +29,26 @@ const PostView = {
   }
 };
 
+const PostEdit = {
+  path: postEditPath(),
+  component: PostEditContainer,
+  prepareData: (store, query, params) => {
+    if (initialLoad()) return;
+    return store.dispatch(fetchPost(params.id));
+  }
+};
+
+const ContactsView = {
+  path: '/contacts',
+  component: ContactsContainer,
+};
+
 export default {
   component: MainLayout,
   childRoutes: [
     Index,
-    PostView
+    PostView,
+    PostEdit,
+    ContactsView
   ]
 };
