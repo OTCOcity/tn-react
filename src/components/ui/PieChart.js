@@ -13,6 +13,7 @@ class PieChart extends React.Component {
   }
 
   componentDidMount() {
+    // eslint-disable-next-line
     if (__CLIENT__) {
       const c3 = require('c3');
       this.chart = c3.generate({
