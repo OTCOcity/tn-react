@@ -1,9 +1,11 @@
-import {PropTypes, DOM} from 'react';
+import PropTypes from 'prop-types';
+import DOM from 'react-dom-factories';
 
 const Like = (props) => (
   DOM.div(
     {
       className: `like__btn noselect ${props.liked ? 'like__btn--liked' : ''}`,
+      id: `like-btn-${props.id}`,
       onClick: () => props.likePost(props.id)
     },
     DOM.i({className: 'like__icon'}, null),

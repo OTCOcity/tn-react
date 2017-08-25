@@ -1,4 +1,7 @@
-import React, {PropTypes, DOM} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import DOM from 'react-dom-factories';
+
 import ReactDOM from 'react-dom';
 
 class PieChart extends React.Component {

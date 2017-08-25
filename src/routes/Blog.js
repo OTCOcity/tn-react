@@ -10,6 +10,7 @@ import PostContainer from 'containers/PostContainer';
 import PostEditContainer from 'containers/PostEditContainer';
 import PostsContainer from 'containers/PostsContainer';
 import ContactsContainer from 'containers/ContactsContainer';
+import NotFound from 'components/containers/NotFound';
 
 const Index = {
   path: '/',
@@ -43,12 +44,18 @@ const ContactsView = {
   component: ContactsContainer,
 };
 
+const NotFoundRoute = {
+  path: '*',
+  component: NotFound,
+};
+
 export default {
   component: MainLayout,
   childRoutes: [
     Index,
     PostView,
     PostEdit,
-    ContactsView
+    ContactsView,
+    NotFoundRoute
   ]
 };
