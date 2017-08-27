@@ -36,6 +36,7 @@ const App = () => (
   </Provider>
 );
 
+// eslint-disable-next-line
 if (__DEVELOPMENT__) {
   ReactDOM.render(
     <DevTools store={store}/>,
