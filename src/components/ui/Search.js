@@ -1,4 +1,5 @@
-import {PropTypes, DOM} from 'react';
+import PropTypes from 'prop-types';
+import DOM from 'react-dom-factories';
 
 const Search = (props) => (
   DOM.div(

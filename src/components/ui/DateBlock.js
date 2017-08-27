@@ -1,4 +1,5 @@
-import {PropTypes, DOM} from 'react';
+import PropTypes from 'prop-types';
+import DOM from 'react-dom-factories';
 import {formatDate} from 'helpers/date';
 
 const DateBlock = ({createdAt, updatedAt}) => (
@@ -17,8 +18,8 @@ const DateBlock = ({createdAt, updatedAt}) => (
 );
 
 DateBlock.defaultProps = {
-  createdAt: 'unknown date',
-  updatedAt: 'unknown date'
+  createdAt: 0,
+  updatedAt: 0
 };
 DateBlock.propTypes = {
   createdAt: PropTypes.number,
