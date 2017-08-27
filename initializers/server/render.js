@@ -7,6 +7,8 @@ import Helmet from 'react-helmet';
 
 import { compact } from 'lodash/array';
 
+import webpackAsset from './webpackAsset';
+
 import createStore from 'store';
 import routes from 'routes';
 
@@ -37,7 +39,8 @@ export default (req, res) => {
       res.render('index', {
         initialState,
         content,
-        head
+        head,
+        webpackAsset
       });
     });
   });
